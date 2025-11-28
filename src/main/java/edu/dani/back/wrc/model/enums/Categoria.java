@@ -4,6 +4,7 @@ public enum Categoria {
 
     RALLY1,
     RALLY2,
-    RALLY3
+    RALLY3,
+    JUNIOR
 
 }

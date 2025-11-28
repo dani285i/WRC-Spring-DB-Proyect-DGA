@@ -34,6 +34,15 @@ public class Coche {
     @JoinColumn(name = "copiloto_id", nullable = false)
     private Piloto copiloto;
 
+    //Manda equipo
+    @ManyToOne
+    @JoinColumn(name = "equipo_id", nullable = false)
+    private Equipo equipo;
+
+    @ManyToOne
+    @JoinColumn(name = "id_patrocinador", nullable = false)
+    private Patrocinador patrocinador;
+
     public Coche() {
     }
 

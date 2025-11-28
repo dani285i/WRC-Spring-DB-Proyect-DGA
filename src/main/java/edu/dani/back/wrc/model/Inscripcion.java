@@ -7,6 +7,8 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
@@ -20,11 +22,16 @@ public class Inscripcion {
     private Long id_inscipcion;
 
     @Column(name="numero_entrada", nullable = false)
-    private int numeroEntrada;
+    private Integer numeroEntrada;
 
     @Enumerated(EnumType.STRING)
     @Column(name="categoria", nullable = false)
     private Categoria categoria;
+
+    //Etapa manda sobre inscripcion
+    @ManyToOne
+    @JoinColumn(name="id_etapa", nullable = false)
+    private Etapa etapa;
 
     public Inscripcion() {
     }

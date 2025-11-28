@@ -1,12 +1,16 @@
 package edu.dani.back.wrc.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -28,6 +32,14 @@ private LocalDate fechaComienzo;
 
 @Column(name="fecha_fin", nullable = false)
 private LocalDate fechaFin;
+
+//Rally manda sobre equpipo
+@OneToMany(mappedBy = "rally", cascade = CascadeType.ALL, orphanRemoval = true)
+private List<Equipo> equipo;
+
+//Rally manda sobre etapa
+@OneToMany(mappedBy = "rally", cascade = CascadeType.ALL, orphanRemoval = true)
+private java.util.List<Etapa> etapas;
 
 public Rally() {
 }

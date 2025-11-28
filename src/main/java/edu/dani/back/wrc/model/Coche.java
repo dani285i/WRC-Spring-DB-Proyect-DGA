@@ -1,6 +1,10 @@
 package edu.dani.back.wrc.model;
 
+import edu.dani.back.wrc.model.vo.MotorInfo;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -42,6 +46,15 @@ public class Coche {
     @ManyToOne
     @JoinColumn(name = "id_patrocinador", nullable = false)
     private Patrocinador patrocinador;
+
+    @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "potenciaCV", column = @Column(name = "potenciaCV", nullable = false)),
+        @AttributeOverride(name = "parMotorNm", column = @Column(name = "parMotorNm", nullable = false)),
+        @AttributeOverride(name = "clindradaCc", column = @Column(name = "cilindradaCc", nullable = false)),
+        @AttributeOverride(name = "esHibrido", column = @Column(name = "esHibrido", nullable = false))
+    })
+    private MotorInfo motorinfo;
 
     public Coche() {
     }

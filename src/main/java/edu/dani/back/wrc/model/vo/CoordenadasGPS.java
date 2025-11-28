@@ -1,23 +1,25 @@
 package edu.dani.back.wrc.model.vo;
 
+import java.math.BigDecimal;
+
 import jakarta.persistence.Embeddable;
 
 @Embeddable
 public class CoordenadasGPS {
-    private final Double latitud;
-    private final Double longitud;
+    private final BigDecimal latitud;
+    private final BigDecimal longitud;
     private final int altitudSobreElMar;
 
-    public CoordenadasGPS(Double latitud, Double longitud, int altitudSobreElMar) {
+    public CoordenadasGPS(BigDecimal latitud, BigDecimal longitud, int altitudSobreElMar) {
         this.latitud = latitud;
         this.longitud = longitud;
         this.altitudSobreElMar = altitudSobreElMar;
     }
 
-    public Double getLatitud() {
+    public BigDecimal getLatitud() {
         return latitud;
     }
-    public Double getLongitud() {
+    public BigDecimal getLongitud() {
         return longitud;
     }
     public int getaltitudSobreElMar() {

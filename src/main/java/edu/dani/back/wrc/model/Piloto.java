@@ -4,8 +4,13 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.dani.back.wrc.model.vo.Dni;
+import edu.dani.back.wrc.model.vo.LicenciaFia;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.GeneratedValue;
@@ -35,6 +40,21 @@ public class Piloto {
 
     @OneToMany(mappedBy = "piloto", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Coche> coches = new ArrayList<>();
+
+    @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "numeroDni", column = @Column(name = "numeroDni", nullable = false)),
+        @AttributeOverride(name = "letraDni", column = @Column(name = "letraDni", nullable = false))
+    })
+    private Dni dni;
+
+    @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "numeroLicencia", column = @Column(name = "numeroLincencia", nullable = false)),
+        @AttributeOverride(name = "fechaCaducidad", column = @Column(name = "fechaCaducidad", nullable = false)),
+        @AttributeOverride(name = "grupoSanguineo", column = @Column(name = "grupoSanguineo", nullable = false))
+    })
+    private LicenciaFia licenciafia;
 
     public Piloto() {
     }

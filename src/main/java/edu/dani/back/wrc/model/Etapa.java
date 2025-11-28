@@ -6,6 +6,10 @@ import java.util.List;
 
 import edu.dani.back.wrc.model.enums.Clima;
 import edu.dani.back.wrc.model.enums.TipoSuperficie;
+import edu.dani.back.wrc.model.vo.CoordenadasGPS;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -15,7 +19,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -53,6 +56,14 @@ public class Etapa {
     //Etapa manda sobre inscripcion
     @OneToMany(mappedBy = "etapa", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Inscripcion> inscripcion = new ArrayList<>();
+
+    @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "latitud", column = @Column(name = "latitud", nullable = false, scale = 2)),
+        @AttributeOverride(name = "longitud", column = @Column(name = "longitud", nullable = false, scale = 2)),
+        @AttributeOverride(name = "altitudSobreElMar", column = @Column(name = "altitudSobreElMar", nullable = false))
+    })
+    private CoordenadasGPS localizacion;
 
     public Etapa() {
     }

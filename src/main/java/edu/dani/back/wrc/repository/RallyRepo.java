@@ -1,10 +1,9 @@
 package edu.dani.back.wrc.repository;
 
-import org.springframework.stereotype.Service;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import edu.dani.back.wrc.repository.interfaces.IRallyRepo;
+import edu.dani.back.wrc.model.Rally;
 
-@Service
-public class RallyRepo implements IRallyRepo {
+public interface RallyRepo extends JpaRepository<Rally, Long> {
 
 }

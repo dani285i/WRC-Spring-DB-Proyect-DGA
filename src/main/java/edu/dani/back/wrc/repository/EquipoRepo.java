@@ -1,10 +1,9 @@
 package edu.dani.back.wrc.repository;
 
-import org.springframework.stereotype.Service;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import edu.dani.back.wrc.repository.interfaces.IEquipoRepo;
+import edu.dani.back.wrc.model.Equipo;
 
-@Service
-public class EquipoRepo implements IEquipoRepo {
+public interface EquipoRepo extends JpaRepository<Equipo, Long> {
 
 }

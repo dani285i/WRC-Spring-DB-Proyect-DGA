@@ -1,10 +1,9 @@
 package edu.dani.back.wrc.repository;
 
-import org.springframework.stereotype.Service;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import edu.dani.back.wrc.repository.interfaces.ICocheRepo;
+import edu.dani.back.wrc.model.Coche;
 
-@Service
-public class CocheRepo implements ICocheRepo {
+public interface CocheRepo extends JpaRepository<Coche, Long> {
 
 }

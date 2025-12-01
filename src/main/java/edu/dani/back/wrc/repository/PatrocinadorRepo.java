@@ -1,10 +1,9 @@
 package edu.dani.back.wrc.repository;
 
-import org.springframework.stereotype.Service;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import edu.dani.back.wrc.repository.interfaces.IPatrocinadorRepo;
+import edu.dani.back.wrc.model.Patrocinador;
 
-@Service
-public class PatrocinadorRepo implements IPatrocinadorRepo {
+public interface PatrocinadorRepo extends JpaRepository<Patrocinador, Long>  {
 
 }

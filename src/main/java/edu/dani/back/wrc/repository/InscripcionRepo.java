@@ -1,10 +1,9 @@
 package edu.dani.back.wrc.repository;
 
-import org.springframework.stereotype.Service;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import edu.dani.back.wrc.repository.interfaces.IInscripcionRepo;
+import edu.dani.back.wrc.model.Inscripcion;
 
-@Service
-public class InscripcionRepo implements IInscripcionRepo {
+public interface InscripcionRepo extends JpaRepository<Inscripcion, Long> {
 
 }

@@ -5,6 +5,6 @@ import org.springframework.stereotype.Service;
 import edu.dani.back.wrc.service.interfaces.IRallyService;
 
 @Service
-public class RallyRepo implements IRallyService {
+public class RallyService implements IRallyService {
 
 }

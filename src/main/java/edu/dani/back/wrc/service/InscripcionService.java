@@ -5,6 +5,6 @@ import org.springframework.stereotype.Service;
 import edu.dani.back.wrc.service.interfaces.IInscripcionService;
 
 @Service
-public class InscripcionRepo implements IInscripcionService {
+public class InscripcionService implements IInscripcionService {
 
 }

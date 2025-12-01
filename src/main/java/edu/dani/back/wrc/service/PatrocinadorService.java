@@ -5,6 +5,6 @@ import org.springframework.stereotype.Service;
 import edu.dani.back.wrc.service.interfaces.IPatrocinadorService;
 
 @Service
-public class PatrocinadorRepo implements IPatrocinadorService {
+public class PatrocinadorService implements IPatrocinadorService {
 
 }

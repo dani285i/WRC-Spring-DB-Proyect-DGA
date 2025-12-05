@@ -1,17 +1,17 @@
 ------------------------------------------
 -- 1. EQUIPOS
 ------------------------------------------
-INSERT INTO equipo (nombre, director, pais_origen, categoria) VALUES
-('Toyota Gazoo Racing WRT', 'Jari-Matti Latvala', 'Japón', 'RALLY1'),
-('Hyundai Shell Mobis WRT', 'Cyril Abiteboul', 'Corea del Sur', 'RALLY1'),
-('M-Sport Ford WRT', 'Richard Millener', 'Reino Unido', 'RALLY1'),
-('Toksport WRT (Škoda)', 'Serkan Duru', 'Alemania', 'RALLY2'),
-('Toyota Gazoo Racing WRT NG', 'Jari-Matti Latvala', 'Japón', 'RALLY2'),
-('Citroën Racing (DG Sport)', 'Alain Georges', 'Francia', 'RALLY2'),
-('M-Sport Ford WRT (WRC2)', 'Richard Millener', 'Reino Unido', 'RALLY2'),
-('Hyundai Motorsport N', 'Cyril Abiteboul', 'Corea del Sur', 'RALLY2'),
-('M-Sport Poland', 'Maciej Woda', 'Polonia', 'RALLY3'),
-('Castrol Renault (Toksport)', 'Serkan Duru', 'Francia', 'RALLY3');
+INSERT INTO equipo (nombre, director, pais_origen) VALUES
+('Toyota Gazoo Racing WRT', 'Jari-Matti Latvala', 'Japón'),
+('Hyundai Shell Mobis WRT', 'Cyril Abiteboul', 'Corea del Sur'),
+('M-Sport Ford WRT', 'Richard Millener', 'Reino Unido'),
+('Toksport WRT (Škoda)', 'Serkan Duru', 'Alemania'),
+('Toyota Gazoo Racing WRT NG', 'Jari-Matti Latvala', 'Japón'),
+('Citroën Racing (DG Sport)', 'Alain Georges', 'Francia'),
+('M-Sport Ford WRT (WRC2)', 'Richard Millener', 'Reino Unido'),
+('Hyundai Motorsport N', 'Cyril Abiteboul', 'Corea del Sur'),
+('M-Sport Poland', 'Maciej Woda', 'Polonia'),
+('Castrol Renault (Toksport)', 'Serkan Duru', 'Francia');
 
 ------------------------------------------
 -- 2. PILOTOS

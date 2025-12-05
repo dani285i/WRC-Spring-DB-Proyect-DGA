@@ -24,14 +24,14 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "etapas")
-public class Etapa {
+@Table(name = "tramo")
+public class Tramo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_etapa;
+    private Long id_tramo;
 
-    @Column(name = "nombre", nullable = false, length = 55)
+    @Column(name = "nombre_tramo", nullable = false, length = 55)
     private String nombre;
 
     @Column(name = "distancia_km", nullable = false)
@@ -48,56 +48,40 @@ public class Etapa {
     @Column(name = "superficie", nullable = false)
     private TipoSuperficie tipoSuperficie;
 
-    //Rally manda sobre etapa
+    // Rally manda sobre tramo
     @ManyToOne
     @JoinColumn(name = "id_rally", nullable = false)
     private Rally rally;
 
-    //Etapa manda sobre inscripcion
-    @OneToMany(mappedBy = "etapa", cascade = CascadeType.ALL, orphanRemoval = true)
+    // Tramo manda sobre inscripcion
+    @OneToMany(mappedBy = "tramo", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Inscripcion> inscripcion = new ArrayList<>();
 
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "latitud", column = @Column(name = "latitud", nullable = false, scale = 2)),
         @AttributeOverride(name = "longitud", column = @Column(name = "longitud", nullable = false, scale = 2)),
-        @AttributeOverride(name = "altitudSobreElMar", column = @Column(name = "altitudSobreElMar", nullable = false))
+        @AttributeOverride(name = "altitudSobreElMar", column = @Column(name = "altitud_sobre_el_mar", nullable = false))
     })
     private CoordenadasGPS localizacion;
 
-    public Etapa() {
+    public Tramo() {
     }
 
-    public Etapa(String nombre, double distancia, BigDecimal horaDia, Clima clima, TipoSuperficie tipoSuperficie) {
+    public Tramo(String nombre, double distancia, BigDecimal horaDia, Clima clima, TipoSuperficie tipoSuperficie) {
         this.nombre = nombre;
         this.distancia = distancia;
         this.horaDia = horaDia;
         this.clima = clima;
         this.tipoSuperficie = tipoSuperficie;
     }
-    
-    public Rally getRally() {
-        return rally;
+
+    public Long getId_tramo() {
+        return id_tramo;
     }
 
-    public void setRally(Rally rally) {
-        this.rally = rally;
-    }
-
-    public List<Inscripcion> getInscripcion() {
-        return inscripcion;
-    }
-
-    public void setInscripcion(List<Inscripcion> inscripcion) {
-        this.inscripcion = inscripcion;
-    }
-
-    public Long getId_etapa() {
-        return id_etapa;
-    }
-
-    public void setId_etapa(Long id) {
-        this.id_etapa = id;
+    public void setId_tramo(Long id_tramo) {
+        this.id_tramo = id_tramo;
     }
 
     public String getNombre() {
@@ -140,8 +124,32 @@ public class Etapa {
         this.tipoSuperficie = tipoSuperficie;
     }
 
+    public Rally getRally() {
+        return rally;
+    }
+
+    public void setRally(Rally rally) {
+        this.rally = rally;
+    }
+
+    public List<Inscripcion> getInscripcion() {
+        return inscripcion;
+    }
+
+    public void setInscripcion(List<Inscripcion> inscripcion) {
+        this.inscripcion = inscripcion;
+    }
+
+    public CoordenadasGPS getLocalizacion() {
+        return localizacion;
+    }
+
+    public void setLocalizacion(CoordenadasGPS localizacion) {
+        this.localizacion = localizacion;
+    }
+
     @Override
     public String toString() {
-        return "Etapa [id=" + id_etapa + ", nombre=" + nombre + ", distancia=" + distancia + "]";
+        return "Etapa [id=" + id_tramo + ", nombre=" + nombre + ", distancia=" + distancia + "]";
     }
 }

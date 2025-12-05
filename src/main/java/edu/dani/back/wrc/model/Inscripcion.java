@@ -1,10 +1,9 @@
 package edu.dani.back.wrc.model;
 
-import edu.dani.back.wrc.model.enums.Categoria;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import edu.dani.back.wrc.model.enums.Categoria;
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -19,62 +18,63 @@ public class Inscripcion {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_inscipcion;
+    private Long id_inscripcion;
 
     @Column(name="numero_entrada", nullable = false)
     private Integer numeroEntrada;
 
+    //Tramo manda sobre inscripcion
+    @ManyToOne
+    @JoinColumn(name = "id_tramo")
+    private Tramo tramo;
+    
     @Enumerated(EnumType.STRING)
     @Column(name="categoria", nullable = false)
     private Categoria categoria;
 
-    //Etapa manda sobre inscripcion
+    // Piloto manda sobre Inscripicion
     @ManyToOne
-    @JoinColumn(name="id_etapa", nullable = false)
-    private Etapa etapa;
+    @JoinColumn(name="piloto_id", nullable = true)
+    private Piloto piloto;
 
     public Inscripcion() {
     }
 
-    public Inscripcion(int numeroEntrada, Categoria categoria) {
-        this.numeroEntrada = numeroEntrada;
-        this.categoria = categoria;
+    public Long getId_inscripcion() {
+        return id_inscripcion;
     }
 
-    public Inscripcion(Long id_inscipcion, int numeroEntrada, Categoria categoria) {
-        this.id_inscipcion = id_inscipcion;
-        this.numeroEntrada = numeroEntrada;
-        this.categoria = categoria;
+    public void setId_inscripcion(Long id_inscipcion) {
+        this.id_inscripcion = id_inscipcion;
     }
 
-    public Long getId_inscipcion() {
-        return id_inscipcion;
-    }
-
-    public void setId_inscipcion(Long id_inscipcion) {
-        this.id_inscipcion = id_inscipcion;
-    }
-
-    public int getNumeroEntrada() {
+    public Integer getNumeroEntrada() {
         return numeroEntrada;
     }
 
-    public void setNumeroEntrada(int numeroEntrada) {
+    public void setNumeroEntrada(Integer numeroEntrada) {
         this.numeroEntrada = numeroEntrada;
     }
 
-    public Categoria getCategoria() {
-        return categoria;
+    public Tramo getTramo() {
+        return tramo;
     }
 
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
+    public void setTramo(Tramo tramo) {
+        this.tramo = tramo;
+    }
+
+    public Piloto getPiloto() {
+        return piloto;
+    }
+
+    public void setPiloto(Piloto piloto) {
+        this.piloto = piloto;
     }
 
     @Override
     public String toString() {
-        return "Inscripcion [id_inscipcion=" + id_inscipcion + ", numeroEntrada=" + numeroEntrada + ", categoria="
-                + categoria + "]";
+        return "Inscripcion [id_inscipcion=" + id_inscripcion + ", numeroEntrada=" + numeroEntrada + "]";
     }
 
 }

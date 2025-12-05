@@ -1,6 +1,7 @@
 package edu.dani.back.wrc.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -20,10 +21,10 @@ public class Rally {
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 private Long id_rally;
 
-@Column(name="nombre", nullable = false, length = 100)
+@Column(name="nombre_rally", nullable = false, length = 100)
 private String nombre;
 
-@Column(name="pais", nullable = false, length = 100)
+@Column(name="pais_rally", nullable = false, length = 100)
 private String pais;
 
 @Column(name="fecha_comienzo", nullable = false)
@@ -34,11 +35,11 @@ private LocalDate fechaFin;
 
 //Rally manda sobre equpipo
 @OneToMany(mappedBy = "rally", cascade = CascadeType.ALL, orphanRemoval = true)
-private List<Equipo> equipo;
+private List<Equipo> equipo = new ArrayList<>();
 
-//Rally manda sobre etapa
+//Rally manda sobre Tramo
 @OneToMany(mappedBy = "rally", cascade = CascadeType.ALL, orphanRemoval = true)
-private java.util.List<Etapa> etapas;
+private List<Tramo> etapas = new ArrayList<>();
 
 public Rally() {
 }
@@ -96,6 +97,22 @@ public LocalDate getFechaFin() {
 
 public void setFechaFin(LocalDate fechaFin) {
     this.fechaFin = fechaFin;
+}
+
+public List<Equipo> getEquipo() {
+    return equipo;
+}
+
+public void setEquipo(List<Equipo> equipo) {
+    this.equipo = equipo;
+}
+
+public List<Tramo> getEtapas() {
+    return etapas;
+}
+
+public void setEtapas(List<Tramo> etapas) {
+    this.etapas = etapas;
 }
 
 @Override

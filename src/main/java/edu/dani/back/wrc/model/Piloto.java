@@ -12,8 +12,8 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -29,7 +29,7 @@ public class Piloto {
     @Column(name="nombre", nullable = false, length = 100)
     private String nombre;
 
-    @Column(name="apellidos", nullable = false, length = 100)
+    @Column(name="apellido", nullable = false, length = 100)
     private String apellidos;
 
     @Column(name="nacionalidad", nullable = false, length = 55)
@@ -37,9 +37,6 @@ public class Piloto {
 
     @Column(name="fecha_nacimiento", nullable = false)
     private LocalDate fechaNacimiento;
-
-    @OneToMany(mappedBy = "piloto", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Coche> coches = new ArrayList<>();
 
     @Embedded
     @AttributeOverrides({
@@ -50,11 +47,15 @@ public class Piloto {
 
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "numeroLicencia", column = @Column(name = "numeroLincencia", nullable = false)),
+        @AttributeOverride(name = "numeroLicencia", column = @Column(name = "numeroLicencia", nullable = false)),
         @AttributeOverride(name = "fechaCaducidad", column = @Column(name = "fechaCaducidad", nullable = false)),
         @AttributeOverride(name = "grupoSanguineo", column = @Column(name = "grupoSanguineo", nullable = false))
     })
     private LicenciaFia licenciafia;
+
+    // Piloto manda sobre inscripcion
+    @OneToMany(mappedBy = "piloto", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Inscripcion> inscripciones = new ArrayList<>();
 
     public Piloto() {
     }
@@ -106,12 +107,28 @@ public class Piloto {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public List<Coche> getCoches() {
-        return coches;
+    public Dni getDni() {
+        return dni;
     }
 
-    public void setCoches(List<Coche> coches) {
-        this.coches = coches;
+    public void setDni(Dni dni) {
+        this.dni = dni;
+    }
+
+    public LicenciaFia getLicenciafia() {
+        return licenciafia;
+    }
+
+    public void setLicenciafia(LicenciaFia licenciafia) {
+        this.licenciafia = licenciafia;
+    }
+
+    public List<Inscripcion> getInscripciones() {
+        return inscripciones;
+    }
+
+    public void setInscripciones(List<Inscripcion> inscripciones) {
+        this.inscripciones = inscripciones;
     }
 
     @Override

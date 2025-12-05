@@ -6,24 +6,24 @@ import java.time.LocalDate;
 @Embeddable
 public class LicenciaFia {
 
-    private final String numeroLicencia;
-    private final LocalDate fechaCaducidad;
-    private final String grupoSanguineo;
+    private final String numero_licencia;
+    private final LocalDate fecha_caducidad;
+    private final String grupo_sanguineo;
 
     public LicenciaFia(String numeroLicencia, LocalDate fechaCaducidad, String grupoSanguineo) {
-        this.numeroLicencia = numeroLicencia;
-        this.fechaCaducidad = fechaCaducidad;
-        this.grupoSanguineo = grupoSanguineo;
+        this.numero_licencia = numeroLicencia;
+        this.fecha_caducidad = fechaCaducidad;
+        this.grupo_sanguineo = grupoSanguineo;
     }
 
-    public String getNumeroLicencia() {
-        return numeroLicencia;
+    public String getNumero_licencia() {
+        return numero_licencia;
     }
-    public LocalDate getFechaCaducidad() {
-        return fechaCaducidad;
+    public LocalDate getFecha_caducidad() {
+        return fecha_caducidad;
     }
-    public String getGrupoSanguineo() {
-        return grupoSanguineo;
+    public String getGrupo_sanguineo() {
+        return grupo_sanguineo;
     }
 
 }

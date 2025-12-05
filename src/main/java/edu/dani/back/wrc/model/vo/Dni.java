@@ -5,20 +5,20 @@ import jakarta.persistence.Embeddable;
 @Embeddable
 public class Dni {
 
-    private final String numeroDni;
-    private final char letraDni;
+    private final String numero_dni;
+    private final char letra_dni;
     
     public Dni(String numeroDni, char letraDni) {
-        this.numeroDni = numeroDni;
-        this.letraDni = letraDni;
+        this.numero_dni = numeroDni;
+        this.letra_dni = letraDni;
     }
 
-    public String getNumeroDni() {
-        return numeroDni;
+    public String getNumero_dni() {
+        return numero_dni;
     }
 
-    public char getLetraDni() {
-        return letraDni;
+    public char getLetra_dni() {
+        return letra_dni;
     }
     
 }

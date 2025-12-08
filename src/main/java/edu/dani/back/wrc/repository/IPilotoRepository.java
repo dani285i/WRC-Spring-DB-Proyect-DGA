@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import edu.dani.back.wrc.model.Piloto;
 
-public interface PilotoRepo extends JpaRepository<Piloto, Long> {
+public interface IPilotoRepository extends JpaRepository<Piloto, Long> {
 
 }

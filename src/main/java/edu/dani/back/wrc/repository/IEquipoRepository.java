@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import edu.dani.back.wrc.model.Equipo;
 
-public interface EquipoRepo extends JpaRepository<Equipo, Long> {
+public interface IEquipoRepository extends JpaRepository<Equipo, Long> {
 
 }

@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import edu.dani.back.wrc.model.Inscripcion;
 
-public interface InscripcionRepo extends JpaRepository<Inscripcion, Long> {
+public interface IInscripcionRepository extends JpaRepository<Inscripcion, Long> {
 
 }

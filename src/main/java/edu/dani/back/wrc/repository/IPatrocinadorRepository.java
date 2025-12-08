@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import edu.dani.back.wrc.model.PatrocinadorOficial;
 
-public interface PatrocinadorRepo extends JpaRepository<PatrocinadorOficial, Long>  {
+public interface IPatrocinadorRepository extends JpaRepository<PatrocinadorOficial, Long>  {
 
 }

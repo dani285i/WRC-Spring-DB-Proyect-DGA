@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 public record TramoDTO(
 
+    Long id_Tramo,
     String nombre,
     double distancia,
     BigDecimal horaDia,

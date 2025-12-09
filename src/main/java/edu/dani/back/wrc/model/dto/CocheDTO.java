@@ -1,10 +1,13 @@
 package edu.dani.back.wrc.model.dto;
 
+import edu.dani.back.wrc.model.enums.Categoria;
+
 public record CocheDTO(
-
+    
+    Long id_Coche,
     String modelo,
-    int dorsal,
+    Integer dorsal,
     String motor,
-    String categoria
-
+    Categoria categoria
+    
 ) {}

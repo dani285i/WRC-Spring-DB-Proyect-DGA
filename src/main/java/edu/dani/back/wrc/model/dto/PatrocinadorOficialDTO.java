@@ -2,8 +2,9 @@ package edu.dani.back.wrc.model.dto;
 
 public record PatrocinadorOficialDTO(
 
-String nombre,
-String sectorIndustria,
-String paginaWeb
-    
+    Long id_Patrocinador,
+    String nombre,
+    String sectorIndustria,
+    String paginaWeb
+
 ) {}

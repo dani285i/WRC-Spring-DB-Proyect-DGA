@@ -10,10 +10,10 @@ public class LicenciaFia {
     private final LocalDate fecha_caducidad;
     private final String grupo_sanguineo;
 
-    public LicenciaFia(String numeroLicencia, LocalDate fechaCaducidad, String grupoSanguineo) {
-        this.numero_licencia = numeroLicencia;
-        this.fecha_caducidad = fechaCaducidad;
-        this.grupo_sanguineo = grupoSanguineo;
+    public LicenciaFia(String numero_licencia, LocalDate fecha_caducidad, String grupo_sanguineo) {
+        this.numero_licencia = numero_licencia;
+        this.fecha_caducidad = fecha_caducidad;
+        this.grupo_sanguineo = grupo_sanguineo;
     }
 
     public String getNumero_licencia() {

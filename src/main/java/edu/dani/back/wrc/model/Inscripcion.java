@@ -44,8 +44,8 @@ public class Inscripcion {
         return id_inscripcion;
     }
 
-    public void setId_inscripcion(Long id_inscipcion) {
-        this.id_inscripcion = id_inscipcion;
+    public void setId_inscripcion(Long id_inscripcion) {
+        this.id_inscripcion = id_inscripcion;
     }
 
     public Integer getNumeroEntrada() {
@@ -62,6 +62,14 @@ public class Inscripcion {
 
     public void setTramo(Tramo tramo) {
         this.tramo = tramo;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
     public Piloto getPiloto() {

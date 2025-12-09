@@ -6,6 +6,13 @@ public record PilotoDTO(
     String nombre,
     String apellidos,
     String nacionalidad,
-    String fechaNacimiento
+    String fechaNacimiento,
+
+    String dniNumero,
+    char dniLetra,
+
+    String licNumero,
+    String licFechaCaducidad,
+    String licGrupoSanguineo
 
 ) {}

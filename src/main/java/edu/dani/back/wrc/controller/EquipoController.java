@@ -8,9 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import edu.dani.back.wrc.model.Coche;
 import edu.dani.back.wrc.model.Equipo;
-import edu.dani.back.wrc.model.dto.CocheDTO;
 import edu.dani.back.wrc.model.dto.EquipoDTO;
 import edu.dani.back.wrc.mapper.EquipoMapper;
 import edu.dani.back.wrc.service.interfaces.IEquipoService;

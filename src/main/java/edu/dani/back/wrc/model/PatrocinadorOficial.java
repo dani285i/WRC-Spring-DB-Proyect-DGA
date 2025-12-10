@@ -9,7 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
-import java.util.ArrayList; // Importante para inicializar la lista
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,13 +21,13 @@ public class PatrocinadorOficial {
     private Long id_patrocinador;
 
     @Column(name="nombre_patrocinador", nullable = true, length = 100)
-    private String nombre; 
+    private String nombre_patrocinador; 
 
     @Column(name = "sector_industria", nullable = true, length = 100)
-    private String sectorIndustria;
+    private String sector_industria;
 
     @Column(name = "pagina_web", nullable = true, length = 255)
-    private String paginaWeb;
+    private String pagina_web;
 
     // Patrocinador manda sobre coche 
     @OneToMany(mappedBy = "patrocinador", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -36,17 +36,12 @@ public class PatrocinadorOficial {
     public PatrocinadorOficial() {
     }
 
-    public PatrocinadorOficial(String nombre, String sectorIndustria, String paginaWeb) {
-        this.nombre = nombre;
-        this.sectorIndustria = sectorIndustria;
-        this.paginaWeb = paginaWeb;
-    }
-
-    public PatrocinadorOficial(Long id, String nombre, String sectorIndustria, String paginaWeb) {
-        this.id_patrocinador = id;
-        this.nombre = nombre;
-        this.sectorIndustria = sectorIndustria;
-        this.paginaWeb = paginaWeb;
+    public PatrocinadorOficial(String nombre_patrocinador, String sector_industria, String pagina_web,
+            List<Coche> coches) {
+        this.nombre_patrocinador = nombre_patrocinador;
+        this.sector_industria = sector_industria;
+        this.pagina_web = pagina_web;
+        this.coches = coches;
     }
 
     public Long getId_patrocinador() {
@@ -57,28 +52,28 @@ public class PatrocinadorOficial {
         this.id_patrocinador = id_patrocinador;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombre_patrocinador() {
+        return nombre_patrocinador;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombre_patrocinador(String nombre_patrocinador) {
+        this.nombre_patrocinador = nombre_patrocinador;
     }
 
-    public String getSectorIndustria() {
-        return sectorIndustria;
+    public String getSector_industria() {
+        return sector_industria;
     }
 
-    public void setSectorIndustria(String sectorIndustria) {
-        this.sectorIndustria = sectorIndustria;
+    public void setSector_industria(String sector_industria) {
+        this.sector_industria = sector_industria;
     }
 
-    public String getPaginaWeb() {
-        return paginaWeb;
+    public String getPagina_web() {
+        return pagina_web;
     }
 
-    public void setPaginaWeb(String paginaWeb) {
-        this.paginaWeb = paginaWeb;
+    public void setPagina_web(String pagina_web) {
+        this.pagina_web = pagina_web;
     }
 
     public List<Coche> getCoches() {
@@ -88,4 +83,5 @@ public class PatrocinadorOficial {
     public void setCoches(List<Coche> coches) {
         this.coches = coches;
     }
+
 }

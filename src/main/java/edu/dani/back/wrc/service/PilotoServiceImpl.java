@@ -1,13 +1,12 @@
 package edu.dani.back.wrc.service;
 
-import edu.dani.back.wrc.service.interfaces.IPilotoService;
-import edu.dani.back.wrc.repository.IPilotoRepository;
-import edu.dani.back.wrc.model.Piloto;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import java.util.List;
-import java.util.Optional;
+
+import edu.dani.back.wrc.model.Piloto;
+import edu.dani.back.wrc.repository.IPilotoRepository;
+import edu.dani.back.wrc.service.interfaces.IPilotoService;
 
 @Service
 public class PilotoServiceImpl implements IPilotoService {
@@ -16,35 +15,28 @@ public class PilotoServiceImpl implements IPilotoService {
     private IPilotoRepository pilotoRepository;
 
     @Override
-    @Transactional
-    public Piloto guardar(Piloto piloto) {
-        return pilotoRepository.save(piloto);
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public List<Piloto> listarTodos() {
+    public List<Piloto> getPilotos() {
         return pilotoRepository.findAll();
     }
 
     @Override
-    @Transactional(readOnly = true)
-    public Optional<Piloto> buscarPorId(Long id) {
-        return pilotoRepository.findById(id);
+    public Piloto getPilotoById(Long id) {
+        return pilotoRepository.findById(id).orElse(null);
     }
 
     @Override
-    @Transactional
-    public Piloto actualizar(Piloto piloto) {
-        if (piloto.getId_piloto() != null && pilotoRepository.existsById(piloto.getId_piloto())) {
-            return pilotoRepository.save(piloto);
+    public Piloto guardarOActualizarPiloto(Piloto piloto) {
+        return pilotoRepository.save(piloto);
+    }
+
+    @Override
+    public Piloto deletePiloto(Long id) {
+
+        Piloto pilotoABorrar = pilotoRepository.findById(id).orElse(null);
+
+        if (pilotoABorrar != null) {
+            pilotoRepository.deleteById(id);
         }
-        return null;
-    }
-
-    @Override
-    @Transactional
-    public void eliminar(Long id) {
-        pilotoRepository.deleteById(id);
+        return pilotoABorrar;
     }
 }

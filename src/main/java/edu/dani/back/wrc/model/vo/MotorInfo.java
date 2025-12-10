@@ -4,10 +4,14 @@ import jakarta.persistence.Embeddable;
 
 @Embeddable
 public class MotorInfo {
-    private final Double potencia_cv;
-    private final Double par_motor_nm;
-    private final Integer cilindrada_cc;
-    private final Boolean es_hibrido;
+
+    private Double potencia_cv;
+    private Double par_motor_nm;
+    private Integer cilindrada_cc;
+    private Boolean es_hibrido;
+
+    public MotorInfo() {
+    }
 
     public MotorInfo(Double potenciaCv, Double parMotorNm, Integer cilindrada_cc, Boolean esHibrido) {
         this.potencia_cv = potenciaCv;
@@ -22,11 +26,28 @@ public class MotorInfo {
     public Double getPar_motor_nm() {
         return par_motor_nm;
     }
+
     public Integer getCilindradaCc() {
         return cilindrada_cc;
     }
+    
     public Boolean getEs_hibrido() {
         return es_hibrido;
     }
 
+    public void setPotencia_cv(Double potencia_cv) {
+        this.potencia_cv = potencia_cv;
+    }
+
+    public void setPar_motor_nm(Double par_motor_nm) {
+        this.par_motor_nm = par_motor_nm;
+    }
+
+    public void setCilindradaCc(Integer cilindrada_cc) {
+        this.cilindrada_cc = cilindrada_cc;
+    }
+
+    public void setEs_hibrido(Boolean es_hibrido) {
+        this.es_hibrido = es_hibrido;
+    }
 }

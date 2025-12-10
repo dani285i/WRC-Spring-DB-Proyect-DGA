@@ -1,17 +1,46 @@
 ------------------------------------------
--- 1. EQUIPOS
+-- 4. PATROCINADORES
 ------------------------------------------
-INSERT INTO equipo (nombre, director, pais_origen) VALUES
-('Toyota Gazoo Racing WRT', 'Jari-Matti Latvala', 'Japón'),
-('Hyundai Shell Mobis WRT', 'Cyril Abiteboul', 'Corea del Sur'),
-('M-Sport Ford WRT', 'Richard Millener', 'Reino Unido'),
-('Toksport WRT (Škoda)', 'Serkan Duru', 'Alemania'),
-('Toyota Gazoo Racing WRT NG', 'Jari-Matti Latvala', 'Japón'),
-('Citroën Racing (DG Sport)', 'Alain Georges', 'Francia'),
-('M-Sport Ford WRT (WRC2)', 'Richard Millener', 'Reino Unido'),
-('Hyundai Motorsport N', 'Cyril Abiteboul', 'Corea del Sur'),
-('M-Sport Poland', 'Maciej Woda', 'Polonia'),
-('Castrol Renault (Toksport)', 'Serkan Duru', 'Francia');
+INSERT INTO patrocinador (nombre_patrocinador, sector_industria, pagina_web) VALUES
+('Toyota Gazoo Racing', 'Automoción', 'https://toyotagazooracing.com'), -- ID 1
+('Shell Helix', 'Energía y combustibles', 'https://www.shell.com'),       -- ID 2
+('Red Bull', 'Bebidas energéticas', 'https://www.redbull.com'),           -- ID 3
+('Monster Energy', 'Bebidas energéticas', 'https://www.monsterenergy.com'),-- ID 4
+('Castrol', 'Lubricantes', 'https://www.castrol.com');                    -- ID 5
+
+----------------------------------------------
+-- 5. RALLIES
+----------------------------------------------
+INSERT INTO rally (nombre_rally, pais_rally, fecha_comienzo, fecha_fin) VALUES
+('Rallye Monte-Carlo', 'Mónaco', '2025-01-23', '2025-01-26'),             -- ID 1
+('Rally Sweden', 'Suecia', '2025-02-13', '2025-02-16'),                   -- ID 2
+('Safari Rally Kenya', 'Kenia', '2025-03-20', '2025-03-23'),              -- ID 3
+('Rally Islas Canarias', 'España', '2025-04-24', '2025-04-27'),           -- ID 4
+('Vodafone Rally de Portugal', 'Portugal', '2025-05-15', '2025-05-18'),   -- ID 5
+('Rally Italia Sardegna', 'Italia', '2025-06-05', '2025-06-08'),          -- ID 6
+('EKO Acropolis Rally', 'Grecia', '2025-06-26', '2025-06-29'),            -- ID 7
+('Delfi Rally Estonia', 'Estonia', '2025-07-17', '2025-07-20'),           -- ID 8
+('Secti Automotive Rally Finland', 'Finlandia', '2025-07-31', '2025-08-03'), -- ID 9
+('Rally del Paraguay', 'Paraguay', '2025-08-28', '2025-08-31'),           -- ID 10
+('Rally Chile Bio Bío', 'Chile', '2025-09-11', '2025-09-14'),             -- ID 11
+('Central European Rally', 'Alemania/R.Checa/Austria', '2025-10-16', '2025-10-19'), -- ID 12
+('Rally Japan', 'Japón', '2025-11-06', '2025-11-09'),                     -- ID 13
+('Rally Saudi Arabia', 'Arabia Saudí', '2025-11-27', '2025-11-30');       -- ID 14
+
+------------------------------------------
+-- 1. EQUIPOS (Añadido id_rally)
+------------------------------------------
+INSERT INTO equipo (nombre, director, pais_origen, id_rally) VALUES
+('Toyota Gazoo Racing WRT', 'Jari-Matti Latvala', 'Japón', 13),
+('Hyundai Shell Mobis WRT', 'Cyril Abiteboul', 'Corea del Sur', 2),
+('M-Sport Ford WRT', 'Richard Millener', 'Reino Unido', 1),
+('Toksport WRT (Škoda)', 'Serkan Duru', 'Alemania', 12),
+('Toyota Gazoo Racing WRT NG', 'Jari-Matti Latvala', 'Japón', 9),
+('Citroën Racing (DG Sport)', 'Alain Georges', 'Francia', 1),
+('M-Sport Ford WRT (WRC2)', 'Richard Millener', 'Reino Unido', 12),
+('Hyundai Motorsport N', 'Cyril Abiteboul', 'Corea del Sur', 2),
+('M-Sport Poland', 'Maciej Woda', 'Polonia', 12),
+('Castrol Renault (Toksport)', 'Serkan Duru', 'Francia', 1);
 
 ------------------------------------------
 -- 2. PILOTOS
@@ -63,91 +92,62 @@ INSERT INTO piloto (nombre, apellido, nacionalidad, fecha_nacimiento, numero_lic
 ('Saeed', 'Al-Mouri', 'Arabia Saudí', '1982-09-05', 'FIA-SAU-039', '2026-12-31', 'O+', '82930416', 'P');
 
 -------------------------------------------------
--- 3. COCHES
+-- 3. COCHES (Añadido id_patrocinador)
 -------------------------------------------------
-INSERT INTO coche (modelo, dorsal, motor, categoria, potencia_cv, par_motor_nm, cilindrada_cc, es_hibrido, id_equipo, id_piloto) VALUES
--- TOYOTA RALLY1
-('Toyota GR Yaris Rally1', 33, 'G16E-GTS Hybrid 1.6L', 'RALLY1', 520, 500, 1600, TRUE, 1, 2),
-('Toyota GR Yaris Rally1', 17, 'G16E-GTS Hybrid 1.6L', 'RALLY1', 520, 500, 1600, TRUE, 1, 9),
-('Toyota GR Yaris Rally1', 69, 'G16E-GTS Hybrid 1.6L', 'RALLY1', 520, 500, 1600, TRUE, 1, 1),
-('Toyota GR Yaris Rally1', 18, 'G16E-GTS Hybrid 1.6L', 'RALLY1', 520, 500, 1600, TRUE, 1, 3),
-('Toyota GR Yaris Rally1', 5, 'G16E-GTS Hybrid 1.6L', 'RALLY1', 520, 500, 1600, TRUE, 1, 10),
+INSERT INTO coche (modelo, dorsal, motor, categoria, potencia_cv, par_motor_nm, cilindrada_cc, es_hibrido, id_equipo, id_piloto, id_patrocinador) VALUES
+-- TOYOTA RALLY1 (Sponsor 1: Toyota Gazoo)
+('Toyota GR Yaris Rally1', 33, 'G16E-GTS Hybrid 1.6L', 'RALLY1', 520, 500, 1600, TRUE, 1, 2, 1),
+('Toyota GR Yaris Rally1', 17, 'G16E-GTS Hybrid 1.6L', 'RALLY1', 520, 500, 1600, TRUE, 1, 9, 1),
+('Toyota GR Yaris Rally1', 69, 'G16E-GTS Hybrid 1.6L', 'RALLY1', 520, 500, 1600, TRUE, 1, 1, 1),
+('Toyota GR Yaris Rally1', 18, 'G16E-GTS Hybrid 1.6L', 'RALLY1', 520, 500, 1600, TRUE, 1, 3, 1),
+('Toyota GR Yaris Rally1', 5, 'G16E-GTS Hybrid 1.6L', 'RALLY1', 520, 500, 1600, TRUE, 1, 10, 1),
 
--- HYUNDAI RALLY1
-('Hyundai i20 N Rally1', 8, 'T-GDI Hybrid 1.6L', 'RALLY1', 525, 510, 1600, TRUE, 2, 5),
-('Hyundai i20 N Rally1', 11, 'T-GDI Hybrid 1.6L', 'RALLY1', 525, 510, 1600, TRUE, 2, 4),
-('Hyundai i20 N Rally1', 16, 'T-GDI Hybrid 1.6L', 'RALLY1', 525, 510, 1600, TRUE, 2, 7),
+-- HYUNDAI RALLY1 (Sponsor 2: Shell Helix)
+('Hyundai i20 N Rally1', 8, 'T-GDI Hybrid 1.6L', 'RALLY1', 525, 510, 1600, TRUE, 2, 5, 2),
+('Hyundai i20 N Rally1', 11, 'T-GDI Hybrid 1.6L', 'RALLY1', 525, 510, 1600, TRUE, 2, 4, 2),
+('Hyundai i20 N Rally1', 16, 'T-GDI Hybrid 1.6L', 'RALLY1', 525, 510, 1600, TRUE, 2, 7, 2),
 
--- FORD PUMA RALLY1
-('Ford Puma Rally1', 55, 'EcoBoost Hybrid 1.6L', 'RALLY1', 515, 495, 1600, TRUE, 3, 11),
-('Ford Puma Rally1', 13, 'EcoBoost Hybrid 1.6L', 'RALLY1', 515, 495, 1600, TRUE, 3, 8),
-('Ford Puma Rally1', 22, 'EcoBoost Hybrid 1.6L', 'RALLY1', 515, 495, 1600, TRUE, 3, 12),
-('Ford Puma Rally1', 20, 'EcoBoost Hybrid 1.6L', 'RALLY1', 515, 495, 1600, TRUE, 3, 13),
+-- FORD PUMA RALLY1 (Sponsor 3: Red Bull)
+('Ford Puma Rally1', 55, 'EcoBoost Hybrid 1.6L', 'RALLY1', 515, 495, 1600, TRUE, 3, 11, 3),
+('Ford Puma Rally1', 13, 'EcoBoost Hybrid 1.6L', 'RALLY1', 515, 495, 1600, TRUE, 3, 8, 3),
+('Ford Puma Rally1', 22, 'EcoBoost Hybrid 1.6L', 'RALLY1', 515, 495, 1600, TRUE, 3, 12, 3),
+('Ford Puma Rally1', 20, 'EcoBoost Hybrid 1.6L', 'RALLY1', 515, 495, 1600, TRUE, 3, 13, 3),
 
--- SKODA FABIA RALLY2
-('Škoda Fabia RS Rally2', 24, '1.6 Turbo 4-cyl', 'RALLY2', 290, 390, 1620, FALSE, 4, 14),
-('Škoda Fabia RS Rally2', 25, '1.6 Turbo 4-cyl', 'RALLY2', 290, 430, 1620, FALSE, 4, 15),
-('Škoda Fabia RS Rally2', 26, '1.6 Turbo 4-cyl', 'RALLY2', 290, 390, 1620, FALSE, 4, 16),
-('Škoda Fabia RS Rally2', 31, '1.6 Turbo 4-cyl', 'RALLY2', 290, 430, 1620, FALSE, 4, 17),
-('Škoda Fabia RS Rally2', 35, '1.6 Turbo 4-cyl', 'RALLY2', 290, 390, 1620, FALSE, 4, 18),
-('Škoda Fabia RS Rally2', 36, '1.6 Turbo 4-cyl', 'RALLY2', 290, 430, 1620, FALSE, 4, 19),
-('Škoda Fabia RS Rally2', 38, '1.6 Turbo 4-cyl', 'RALLY2', 290, 390, 1620, FALSE, 4, 20),
+-- SKODA FABIA RALLY2 (Sponsor 5: Castrol)
+('Škoda Fabia RS Rally2', 24, '1.6 Turbo 4-cyl', 'RALLY2', 290, 390, 1620, FALSE, 4, 14, 5),
+('Škoda Fabia RS Rally2', 25, '1.6 Turbo 4-cyl', 'RALLY2', 290, 430, 1620, FALSE, 4, 15, 5),
+('Škoda Fabia RS Rally2', 26, '1.6 Turbo 4-cyl', 'RALLY2', 290, 390, 1620, FALSE, 4, 16, 5),
+('Škoda Fabia RS Rally2', 31, '1.6 Turbo 4-cyl', 'RALLY2', 290, 430, 1620, FALSE, 4, 17, 5),
+('Škoda Fabia RS Rally2', 35, '1.6 Turbo 4-cyl', 'RALLY2', 290, 390, 1620, FALSE, 4, 18, 5),
+('Škoda Fabia RS Rally2', 36, '1.6 Turbo 4-cyl', 'RALLY2', 290, 430, 1620, FALSE, 4, 19, 5),
+('Škoda Fabia RS Rally2', 38, '1.6 Turbo 4-cyl', 'RALLY2', 290, 390, 1620, FALSE, 4, 20, 5),
 
--- SKODA FABIA EVO
-('Škoda Fabia Evo Rally2', 47, '1.6 Turbo 4-cyl', 'RALLY2', 290, 390, 1620, FALSE, 4, 21),
-('Škoda Fabia Evo Rally2', 48, '1.6 Turbo 4-cyl', 'RALLY2', 290, 390, 1620, FALSE, 4, 22),
+-- SKODA FABIA EVO (Sponsor 4: Monster)
+('Škoda Fabia Evo Rally2', 47, '1.6 Turbo 4-cyl', 'RALLY2', 290, 390, 1620, FALSE, 4, 21, 4),
+('Škoda Fabia Evo Rally2', 48, '1.6 Turbo 4-cyl', 'RALLY2', 290, 390, 1620, FALSE, 4, 22, 4),
 
--- TOYOTA YARIS RALLY2
-('Toyota GR Yaris Rally2', 21, '1.6 Turbo 3-cyl', 'RALLY2', 290, 420, 1618, FALSE, 5, 23),
-('Toyota GR Yaris Rally2', 23, '1.6 Turbo 3-cyl', 'RALLY2', 290, 420, 1618, FALSE, 5, 24),
-('Toyota GR Yaris Rally2', 27, '1.6 Turbo 3-cyl', 'RALLY2', 290, 420, 1618, FALSE, 5, 25),
-('Toyota GR Yaris Rally2', 28, '1.6 Turbo 3-cyl', 'RALLY2', 290, 420, 1618, FALSE, 5, 26),
-('Toyota GR Yaris Rally2', 29, '1.6 Turbo 3-cyl', 'RALLY2', 290, 420, 1618, FALSE, 5, 27),
-('Toyota GR Yaris Rally2', 32, '1.6 Turbo 3-cyl', 'RALLY2', 290, 420, 1618, FALSE, 5, 28),
-('Toyota GR Yaris Rally2', 34, '1.6 Turbo 3-cyl', 'RALLY2', 290, 420, 1618, FALSE, 5, 29),
-('Toyota GR Yaris Rally2', 37, '1.6 Turbo 3-cyl', 'RALLY2', 290, 420, 1618, FALSE, 5, 30),
-('Toyota GR Yaris Rally2', 40, '1.6 Turbo 3-cyl', 'RALLY2', 290, 420, 1618, FALSE, 5, 31),
+-- TOYOTA YARIS RALLY2 (Sponsor 1: Toyota)
+('Toyota GR Yaris Rally2', 21, '1.6 Turbo 3-cyl', 'RALLY2', 290, 420, 1618, FALSE, 5, 23, 1),
+('Toyota GR Yaris Rally2', 23, '1.6 Turbo 3-cyl', 'RALLY2', 290, 420, 1618, FALSE, 5, 24, 1),
+('Toyota GR Yaris Rally2', 27, '1.6 Turbo 3-cyl', 'RALLY2', 290, 420, 1618, FALSE, 5, 25, 1),
+('Toyota GR Yaris Rally2', 28, '1.6 Turbo 3-cyl', 'RALLY2', 290, 420, 1618, FALSE, 5, 26, 1),
+('Toyota GR Yaris Rally2', 29, '1.6 Turbo 3-cyl', 'RALLY2', 290, 420, 1618, FALSE, 5, 27, 1),
+('Toyota GR Yaris Rally2', 32, '1.6 Turbo 3-cyl', 'RALLY2', 290, 420, 1618, FALSE, 5, 28, 1),
+('Toyota GR Yaris Rally2', 34, '1.6 Turbo 3-cyl', 'RALLY2', 290, 420, 1618, FALSE, 5, 29, 1),
+('Toyota GR Yaris Rally2', 37, '1.6 Turbo 3-cyl', 'RALLY2', 290, 420, 1618, FALSE, 5, 30, 1),
+('Toyota GR Yaris Rally2', 40, '1.6 Turbo 3-cyl', 'RALLY2', 290, 420, 1618, FALSE, 5, 31, 1),
 
--- CITROEN & FORD RALLY2
-('Citroën C3 Rally2', 23, '1.6 Turbo THP', 'RALLY2', 295, 400, 1598, FALSE, 6, 32),
-('Citroën C3 Rally2', 27, '1.6 Turbo THP', 'RALLY2', 295, 400, 1598, FALSE, 6, 33),
-('Ford Fiesta Mk II Rally2', 22, '1.6 EcoBoost Turbo', 'RALLY2', 290, 400, 1598, FALSE, 7, 34),
+-- CITROEN & FORD RALLY2 (Sponsor 5: Castrol)
+('Citroën C3 Rally2', 23, '1.6 Turbo THP', 'RALLY2', 295, 400, 1598, FALSE, 6, 32, 5),
+('Citroën C3 Rally2', 27, '1.6 Turbo THP', 'RALLY2', 295, 400, 1598, FALSE, 6, 33, 5),
+('Ford Fiesta Mk II Rally2', 22, '1.6 EcoBoost Turbo', 'RALLY2', 290, 400, 1598, FALSE, 7, 34, 5),
 
--- RALLY3
-('Ford Fiesta Rally3', 41, '1.5 EcoBoost 3-cyl', 'RALLY3', 235, 400, 1497, FALSE, 9, 35),
-('Ford Fiesta Rally3', 45, '1.5 EcoBoost 3-cyl', 'RALLY3', 235, 400, 1497, FALSE, 9, 36),
-('Ford Fiesta Rally3', 49, '1.5 EcoBoost 3-cyl', 'RALLY3', 235, 400, 1497, FALSE, 9, 37),
-('Renault Clio Rally3', 61, '1.3 TCe 4-cyl 16V', 'RALLY3', 260, 415, 1332, FALSE, 10, 38),
-('Renault Clio Rally3', 62, '1.3 TCe 4-cyl 16V', 'RALLY3', 260, 415, 1332, FALSE, 10, 39);
-
-------------------------------------------
--- 4. PATROCINADORES
-------------------------------------------
-INSERT INTO patrocinador (nombre_patrocinador, sector_industria, pagina_web) VALUES
-('Toyota Gazoo Racing', 'Automoción', 'https://toyotagazooracing.com'),
-('Shell Helix', 'Energía y combustibles', 'https://www.shell.com'),
-('Red Bull', 'Bebidas energéticas', 'https://www.redbull.com'),
-('Monster Energy', 'Bebidas energéticas', 'https://www.monsterenergy.com'),
-('Castrol', 'Lubricantes', 'https://www.castrol.com');
-
-----------------------------------------------
--- 5. RALLIES
-----------------------------------------------
-INSERT INTO rally (nombre_rally, pais_rally, fecha_comienzo, fecha_fin) VALUES
-('Rallye Monte-Carlo', 'Mónaco', '2025-01-23', '2025-01-26'),
-('Rally Sweden', 'Suecia', '2025-02-13', '2025-02-16'),
-('Safari Rally Kenya', 'Kenia', '2025-03-20', '2025-03-23'),
-('Rally Islas Canarias', 'España', '2025-04-24', '2025-04-27'),
-('Vodafone Rally de Portugal', 'Portugal', '2025-05-15', '2025-05-18'),
-('Rally Italia Sardegna', 'Italia', '2025-06-05', '2025-06-08'),
-('EKO Acropolis Rally', 'Grecia', '2025-06-26', '2025-06-29'),
-('Delfi Rally Estonia', 'Estonia', '2025-07-17', '2025-07-20'),
-('Secti Automotive Rally Finland', 'Finlandia', '2025-07-31', '2025-08-03'),
-('Rally del Paraguay', 'Paraguay', '2025-08-28', '2025-08-31'),
-('Rally Chile Bio Bío', 'Chile', '2025-09-11', '2025-09-14'),
-('Central European Rally', 'Alemania/R.Checa/Austria', '2025-10-16', '2025-10-19'),
-('Rally Japan', 'Japón', '2025-11-06', '2025-11-09'),
-('Rally Saudi Arabia', 'Arabia Saudí', '2025-11-27', '2025-11-30');
+-- RALLY3 (Sponsor 4: Monster)
+('Ford Fiesta Rally3', 41, '1.5 EcoBoost 3-cyl', 'RALLY3', 235, 400, 1497, FALSE, 9, 35, 4),
+('Ford Fiesta Rally3', 45, '1.5 EcoBoost 3-cyl', 'RALLY3', 235, 400, 1497, FALSE, 9, 36, 4),
+('Ford Fiesta Rally3', 49, '1.5 EcoBoost 3-cyl', 'RALLY3', 235, 400, 1497, FALSE, 9, 37, 4),
+('Renault Clio Rally3', 61, '1.3 TCe 4-cyl 16V', 'RALLY3', 260, 415, 1332, FALSE, 10, 38, 4),
+('Renault Clio Rally3', 62, '1.3 TCe 4-cyl 16V', 'RALLY3', 260, 415, 1332, FALSE, 10, 39, 4);
 
 ------------------------------------------
 -- 6. TRAMOS
@@ -169,46 +169,47 @@ INSERT INTO tramo (nombre_tramo, distancia_km, superficie, clima, hora, latitud,
 ('Jeddah Desert Stage', 24.50, 'TIERRA', 'DESPEJADO', 17.30, 21.5433, 39.1900, 80, 14);
 
 --------------------------------------------------------
--- 7. INSCRIPCIONES
+-- 7. INSCRIPCIONES (Añadido id_tramo)
 --------------------------------------------------------
-INSERT INTO inscripcion (numero_entrada, categoria, piloto_id) VALUES
-(1, 'RALLY1', 4),
-(2, 'RALLY1', 2),
-(3, 'RALLY1', 5),
-(4, 'RALLY1', 9),
-(5, 'RALLY1', 7),
-(6, 'RALLY1', 3),
-(7, 'RALLY1', 1),
-(8, 'RALLY1', 8),
-(9, 'RALLY1', 10),
-(10, 'RALLY1', 13),
-(11, 'RALLY1', 12),
-(12, 'RALLY1', 11),
+-- Se distribuyen las inscripciones entre los tramos disponibles para variar los datos
+INSERT INTO inscripcion (numero_entrada, categoria, piloto_id, id_tramo) VALUES
+(1, 'RALLY1', 4, 1),
+(2, 'RALLY1', 2, 1),
+(3, 'RALLY1', 5, 2),
+(4, 'RALLY1', 9, 2),
+(5, 'RALLY1', 7, 3),
+(6, 'RALLY1', 3, 3),
+(7, 'RALLY1', 1, 4),
+(8, 'RALLY1', 8, 4),
+(9, 'RALLY1', 10, 5),
+(10, 'RALLY1', 13, 5),
+(11, 'RALLY1', 12, 6),
+(12, 'RALLY1', 11, 6),
 
-(13, 'RALLY2', 23),
-(14, 'RALLY2', 24),
-(15, 'RALLY2', 14),
-(16, 'RALLY2', 15),
-(17, 'RALLY2', 16),
-(18, 'RALLY2', 25),
-(19, 'RALLY2', 26),
-(20, 'RALLY2', 27),
-(21, 'RALLY2', 32),
-(22, 'RALLY2', 17),
-(23, 'RALLY2', 28),
-(24, 'RALLY2', 29),
-(25, 'RALLY2', 18),
-(26, 'RALLY2', 19),
-(27, 'RALLY2', 30),
-(28, 'RALLY2', 20),
-(29, 'RALLY2', 34),
-(30, 'RALLY2', 31),
-(31, 'RALLY2', 33),
-(32, 'RALLY2', 21),
-(33, 'RALLY2', 22),
+(13, 'RALLY2', 23, 7),
+(14, 'RALLY2', 24, 7),
+(15, 'RALLY2', 14, 8),
+(16, 'RALLY2', 15, 8),
+(17, 'RALLY2', 16, 9),
+(18, 'RALLY2', 25, 9),
+(19, 'RALLY2', 26, 10),
+(20, 'RALLY2', 27, 10),
+(21, 'RALLY2', 32, 11),
+(22, 'RALLY2', 17, 11),
+(23, 'RALLY2', 28, 12),
+(24, 'RALLY2', 29, 12),
+(25, 'RALLY2', 18, 13),
+(26, 'RALLY2', 19, 13),
+(27, 'RALLY2', 30, 14),
+(28, 'RALLY2', 20, 14),
+(29, 'RALLY2', 34, 1),
+(30, 'RALLY2', 31, 2),
+(31, 'RALLY2', 33, 3),
+(32, 'RALLY2', 21, 4),
+(33, 'RALLY2', 22, 5),
 
-(34, 'RALLY3', 35),
-(35, 'RALLY3', 38),
-(36, 'RALLY3', 39),
-(37, 'RALLY3', 36),
-(38, 'RALLY3', 37);
+(34, 'RALLY3', 35, 6),
+(35, 'RALLY3', 38, 7),
+(36, 'RALLY3', 39, 8),
+(37, 'RALLY3', 36, 9),
+(38, 'RALLY3', 37, 10);

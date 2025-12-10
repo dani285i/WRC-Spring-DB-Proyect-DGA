@@ -40,16 +40,17 @@ public class Piloto {
 
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "numeroDni", column = @Column(name = "numeroDni", nullable = false)),
-        @AttributeOverride(name = "letraDni", column = @Column(name = "letraDni", nullable = false))
+
+        @AttributeOverride(name = "numero_dni", column = @Column(name = "numero_dni", nullable = false)),
+        @AttributeOverride(name = "letra_dni", column = @Column(name = "letra_dni", nullable = false))
     })
     private Dni dni;
 
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "numeroLicencia", column = @Column(name = "numeroLicencia", nullable = false)),
-        @AttributeOverride(name = "fechaCaducidad", column = @Column(name = "fechaCaducidad", nullable = false)),
-        @AttributeOverride(name = "grupoSanguineo", column = @Column(name = "grupoSanguineo", nullable = false))
+        @AttributeOverride(name = "numero_licencia", column = @Column(name = "numero_licencia", nullable = false)),
+        @AttributeOverride(name = "fecha_caducidad", column = @Column(name = "fecha_caducidad", nullable = false)),
+        @AttributeOverride(name = "grupo_sanguineo", column = @Column(name = "grupo_sanguineo", nullable = false))
     })
     private LicenciaFia licenciafia;
 

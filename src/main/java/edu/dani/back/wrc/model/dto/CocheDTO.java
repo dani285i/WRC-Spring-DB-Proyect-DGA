@@ -11,6 +11,7 @@ public record CocheDTO(
     Double potenciaCv,
     Double parMotorNm,
     Integer cilindradaCc,
-    Boolean esHibrido
-
+    Boolean esHibrido,
+    Long idEquipo,
+    Long idPiloto
 ) {}

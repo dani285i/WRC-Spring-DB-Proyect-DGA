@@ -6,9 +6,13 @@ import jakarta.persistence.Embeddable;
 
 @Embeddable
 public class CoordenadasGPS {
-    private final BigDecimal latitud;
-    private final BigDecimal longitud;
-    private final int altitudSobreElMar;
+    
+    private BigDecimal latitud;
+    private BigDecimal longitud;
+    private int altitudSobreElMar;
+
+    public CoordenadasGPS() {
+    }
 
     public CoordenadasGPS(BigDecimal latitud, BigDecimal longitud, int altitudSobreElMar) {
         this.latitud = latitud;
